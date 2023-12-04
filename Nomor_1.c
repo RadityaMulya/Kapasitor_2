@@ -1,16 +1,19 @@
 #include <stdio.h>
 
 // Fungsi untuk menghitung hambatan total dari dua resistor yang dihubungkan secara paralel
-float Parallel(float r1, float r2) {
+float Parallel(float r1, float r2)
+{
     return (r1 * r2) / (r1 + r2);
 }
 
 // Fungsi untuk menghitung hambatan total dari dua resistor yang dihubungkan secara seri
-float Seri(float r1, float r2) {
+float Seri(float r1, float r2)
+{
     return r1 + r2;
 }
 
-int main() {
+int main()
+{
     float r1 = 2, r2 = 4, r3 = 6, r4 = 3, r5 = 5, r6 = 3, r7 = 2, v = 18;
     float rp1, rs1, rp2, rs2, rp3, It, i1, is2, i4, is1, i5, i7;
 
