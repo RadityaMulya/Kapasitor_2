@@ -16,6 +16,7 @@ int main()
 {
     float r1 = 2, r2 = 4, r3 = 6, r4 = 3, r5 = 5, r6 = 3, r7 = 2, v = 18;
     float rp1, rs1, rp2, rs2, rp3, It, i1, is2, i4, is1, i5, i7;
+    float v1, v2, v3, v4, v5, v6, v7;
 
     // Hitung rp1 (r5 dan r7 dihubungkan secara paralel)
     rp1 = Parallel(r5, r7);
@@ -50,10 +51,23 @@ int main()
     i5 = (r7 / (r5 + r7)) * is1;
 
     // Hitung i7
-    i7 = rp1 - i5;
+    i7 = is1 - i5;
 
+    v1 = i1 * r1;
+    v2 = is2 * r2;
+    v3 = is2 * r3;
+    v4 = i4 * r4;
+    v5 = i5 * r5;
+    v6 = is1 * r6;
+    v7 = i7 * r7;
+
+    // Total Hambatan atau R total
     printf("Hambatan total (rp3): %.2lf ohm\n", rp3);
+    
+    // Arus Total
     printf("Arus total (It) = %.2lf A\n", It);
+
+    // Total I1 - I7
     printf("i1: %.2lf A\n", i1);
     printf("i2: %.2lf A\n", is2);
     printf("i3: %.2lf A\n", is2);
@@ -61,6 +75,16 @@ int main()
     printf("i5: %.2lf A\n", i5);
     printf("i6: %.2lf A\n", is1);
     printf("i7: %.2lf A\n", i7);
+
+    // Total V1 - V7
+    printf("v1: %.2f V\n", v1);
+    printf("v2: %.2f V\n", v2);
+    printf("v3: %.2f V\n", v3);
+    printf("v4: %.2f V\n", v4);
+    printf("v5: %.2f V\n", v5);
+    printf("v6: %.2f V\n", v6);
+    printf("v7: %.2f V\n", v7);
+
 
     return 0;
 }
