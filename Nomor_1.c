@@ -12,11 +12,25 @@ float Seri(float r1, float r2)
     return r1 + r2;
 }
 
+// Fungsi untuk menghitung kapasitor secara paralel
+float parallelCapacitance(float c1, float c2)
+{
+    return c1 + c2;
+}
+
+// Fungsi untuk mengitung kapasitor atau c secara seri
+float seriesCapacitance(float c1, float c2)
+{
+    return (c1 * c2) / (c1 + c2);
+}
+
 int main()
 {
     float r1 = 2, r2 = 4, r3 = 6, r4 = 3, r5 = 5, r6 = 3, r7 = 2, v = 18;
     float rp1, rs1, rp2, rs2, rp3, It, i1, is2, i4, is1, i5, i7;
     float v1, v2, v3, v4, v5, v6, v7;
+    float c1 = r1, c2 = r2, c3 = r3, c4 = r4, c5 = r5, c6 = r6, c7 = r7;
+    float cp1, cs1, cp2, cs2, cp3, ctotal;
 
     // Hitung rp1 (r5 dan r7 dihubungkan secara paralel)
     rp1 = Parallel(r5, r7);
@@ -63,7 +77,7 @@ int main()
 
     // Total Hambatan atau R total
     printf("Hambatan total (rp3): %.2lf ohm\n", rp3);
-    
+
     // Arus Total
     printf("Arus total (It) = %.2lf A\n", It);
 
@@ -85,6 +99,25 @@ int main()
     printf("v6: %.2f V\n", v6);
     printf("v7: %.2f V\n", v7);
 
+    // Hitung cp1 (c5 dan c7 dihubungkan secara paralel)
+    cp1 = parallelCapacitance(c5, c7);
+
+    // Hitung cs1 (cp1 dan c6 dihubungkan secara seri)
+    cs1 = seriesCapacitance(cp1, c6);
+
+    // Hitung cp2 (cs1 dan c4 dihubungkan secara paralel)
+    cp2 = parallelCapacitance(cs1, c4);
+
+    // Hitung cs2 (cp2, c2, dan c3 dihubungkan secara seri)
+    cs2 = seriesCapacitance(seriesCapacitance(cp2, c2), c3);
+
+    // Hitung cp3 (cs2 dan c1 dihubungkan secara paralel)
+    cp3 = seriesCapacitance(cs2, c1);
+
+    // Kapasitansi total adalah cp3
+    ctotal = cp3;
+
+    printf("Kapasitansi total (Ctotal): %.2f F\n", ctotal);
 
     return 0;
 }
